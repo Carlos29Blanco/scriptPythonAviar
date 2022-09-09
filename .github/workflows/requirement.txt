@@ -1,0 +1,16 @@
+#arcgis
+#urllib.request
+#io
+requests
+#os
+ujson
+six
+requests_toolbelt
+requests_ntlm
+ntlm_auth
+cachetools
+lxml
+requests_oauthlib
+IPython
+ipywidgets
+pandas
