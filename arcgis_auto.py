@@ -20,10 +20,10 @@ from datetime import datetime, timedelta, date
 import numpy as np
 from dateutil.relativedelta import relativedelta, MO
 
-username='CAHFS_UMN'
-password='CAHFSVPMCVMUMN2022'
+username='iglesias'
+password='inia1977'
 
-gis = GIS("https://umn.maps.arcgis.com/home/index.html", username, password)
+gis = GIS("https://gis.inia.es/portal/home/index.html", username, password)
 
 #Descarga de datos portal de la FAO de los ultimos 4 meses
 #https://europe-west1-fao-empres-re.cloudfunctions.net/getEventsInfluenzaAvian?start_date=2021-07-22&end_date=2021-10-22&serotype=all&diagnosis_status=confirmed&animal_type=all
@@ -78,12 +78,12 @@ item_properties = {
     }
 
 
-csv_item = gis.content.add(item_properties, inputRuta, folder = "aviar")
+csv_item = gis.content.add(item_properties, inputRuta, folder = "cisa_visores")
 csv_id = csv_item.id
 
 csv_lyr = csv_item.publish(overwrite = True, item_id = csv_id)
 
-historico_id = "7823a0b7da024b60bd21cd963e7ef4a1"
+historico_id = "ccda52705369466c86a6fff3e7ed2db9"
 historico_item = gis.content.get(historico_id)
 
 # #Eliminar datos de los ultimos 1 meses en adelante
@@ -124,9 +124,6 @@ historico_fset = feature_table.query()
 len(historico_fset.features)
 
 all_features = historico_fset.features
-
-# all_features
-
 historico_flayer.edit_features(adds = all_features)
 
 #Eliminar capa csv_id y feature_id
@@ -138,4 +135,3 @@ print(csv_delete)
 feature_id = csv_lyr.id
 feature_delete = gis.content.get(feature_id)
 feature_delete.delete()
-
