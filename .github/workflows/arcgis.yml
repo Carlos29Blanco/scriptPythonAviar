@@ -2,7 +2,7 @@ name: arcgis
 
 on:
   schedule:
-  - cron: '0 5 * * 1-5'
+  - cron: '07 16 * * 1-5'
   
 jobs:
   run:
